@@ -12,14 +12,18 @@ pushover_url = "https://api.pushover.net/1/messages.json"
 
 
 def push(text):
-    requests.post(
-        pushover_url,
-        data={
-            "token": pushover_token,
-            "user": pushover_user,
-            "message": text,
-        },
-    )
+    try:
+        requests.post(
+            pushover_url,
+            data={
+                "token": pushover_token,
+                "user": pushover_user,
+                "message": text,
+            },
+            timeout=2.0
+        )
+    except requests.exceptions.RequestException as e:
+        print(f"Pushover push failed or timed out: {e}")
 
 
 def record_user_details(email, name="Name not provided", notes="not provided"):

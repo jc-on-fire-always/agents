@@ -1,2 +1,32 @@
-My name is Ed Donner. I'm an entrepreneur, software engineer and data scientist. I'm originally from London, England, but I moved to NYC in 2000.
-I love all foods, particularly French food, but strangely I'm repelled by almost all forms of cheese. I'm not allergic, I just hate the taste! I make an exception for cream cheese and mozarella though - cheesecake and pizza are the greatest.
+LinkedIn Profile Summary
+
+Name: Jayant Chawla
+
+Headline: Data Engineering Intern at Sigmoid | B.Tech CSE’26 (HBTU) |
+Full Stack Web Developer | C++
+
+Summary: Jayant Chawla is a Computer Science undergraduate with
+experience spanning data engineering, full-stack development, product
+design, and student leadership. He is currently working as a Data
+Engineering Intern at Sigmoid in Bengaluru, where he is building
+practical industry experience. His background also includes internships
+in technology and product design, along with leading cultural
+initiatives at HBTU.
+
+Experience: - Data Engineering Intern, Sigmoid (Jan 2026 – Present) -
+Working on data engineering projects in Bengaluru.
+
+-   Student Secretary, Cultural Sub Council, HBTU Kanpur (Nov 2024 – Nov
+    2025)
+    -   Led and coordinated student cultural activities.
+-   Tech Intern, proPAL AI (Jun 2025 – Aug 2025)
+    -   Contributed to technology-focused projects.
+-   Product Design Intern, Dualite (Feb 2024 – Apr 2024)
+    -   Designed a revamped dashboard and plugin.
+    -   Developed the Product Hunt marketing strategy.
+
+Education: - B.Tech in Computer Science Harcourt Butler Technical
+University (2022 – 2026)
+
+Key Skills: - Data Engineering - Full-Stack Web Development - C++ -
+Front-End Development - UI/UX - Marketing Strategy - Product Design

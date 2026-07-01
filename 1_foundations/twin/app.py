@@ -1,15 +1,23 @@
 from openai import OpenAI
+# pyrefly: ignore [missing-import]
 from context import TWIN_SYSTEM_PROMPT
+# pyrefly: ignore [missing-import]
 from tools import tools, handle_tool_calls
+# pyrefly: ignore [missing-import]
 from styles import CSS, JS, EXAMPLES
 from dotenv import load_dotenv
 import gradio as gr
 
 load_dotenv(override=True)
 
-MODEL_NAME = "gpt-5.4-mini"
+MODEL_NAME = "gemini-3.5-flash"
 
-openai = OpenAI()
+import os
+GEMINI_BASE_URL = "https://generativelanguage.googleapis.com/v1beta/openai/"
+openai = OpenAI(
+    base_url=GEMINI_BASE_URL,
+    api_key=os.getenv("GOOGLE_API_KEY") or os.getenv("GEMINI_API_KEY")
+)
 
 system = [{"role": "system", "content": TWIN_SYSTEM_PROMPT}]
 
