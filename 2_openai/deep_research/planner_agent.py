@@ -1,10 +1,23 @@
+import os
+from openai import AsyncOpenAI
+
+from agents import OpenAIChatCompletionsModel
+
+_client = AsyncOpenAI(
+    base_url="https://generativelanguage.googleapis.com/v1beta/openai/",
+    api_key=os.getenv("GOOGLE_API_KEY") or os.getenv("GEMINI_API_KEY")
+)
+gemini_model = OpenAIChatCompletionsModel(
+    model="gemini-3.1-flash-lite",
+    openai_client=_client
+)
 from pydantic import BaseModel, Field
 from agents import Agent
 import os
 from dotenv import load_dotenv
 load_dotenv(override=True)
 
-MODEL_NAME = os.getenv("DEFAULT_MODEL_NAME", "gpt-5.4-mini")
+MODEL_NAME = gemini_model
 HOW_MANY_SEARCHES = int(os.getenv("HOW_MANY_SEARCHES", 5))
 
 
@@ -21,4 +34,4 @@ class WebSearchItem(BaseModel):
 class WebSearchPlan(BaseModel):
     searches: list[WebSearchItem] = Field(description="A list of web searches to perform to best answer the query.")
     
-planner_agent = Agent(name="Planner Agent", instructions=INSTRUCTIONS, model=MODEL_NAME, output_type=WebSearchPlan)
+planner_agent = Agent(name="Planner Agent", instructions=INSTRUCTIONS, model=gemini_model, output_type=WebSearchPlan)

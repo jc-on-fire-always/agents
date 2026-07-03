@@ -1,10 +1,22 @@
+import os
+from openai import AsyncOpenAI
+from agents import OpenAIChatCompletionsModel
+
+_client = AsyncOpenAI(
+    base_url="https://generativelanguage.googleapis.com/v1beta/openai/",
+    api_key=os.getenv("GOOGLE_API_KEY") or os.getenv("GEMINI_API_KEY")
+)
+gemini_model = OpenAIChatCompletionsModel(
+    model="gemini-3.1-flash-lite",
+    openai_client=_client
+)
 from agents import Agent, function_tool, ModelSettings
 from messenger import send_email, push
 import os
 from dotenv import load_dotenv
 load_dotenv(override=True)
 
-MODEL_NAME = os.getenv("DEFAULT_MODEL_NAME", "gpt-5.4-mini")
+MODEL_NAME = gemini_model
 USE_EMAIL = os.getenv("USE_EMAIL", "true").lower() == "true"
 
 settings = ModelSettings(tool_choice="required")
@@ -31,4 +43,4 @@ You are provided with a detailed report. Use your tool to send an email, convert
 a clean, well presented HTML email with an appropriate subject line.
 """
 
-email_agent = Agent(name="Email Agent", instructions=INSTRUCTIONS, tools=[send_email_tool], model=MODEL_NAME, model_settings=settings)
+email_agent = Agent(name="Email Agent", instructions=INSTRUCTIONS, tools=[send_email_tool], model=gemini_model, model_settings=settings)

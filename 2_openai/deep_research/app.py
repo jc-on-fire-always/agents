@@ -1,9 +1,9 @@
-import gradio as gr
 from dotenv import load_dotenv
+load_dotenv(override=True)
+
+import gradio as gr
 from research_manager import ResearchManager
 from styles import CSS, JS, EXAMPLES, HEADER_HTML
-
-load_dotenv(override=True)
 
 
 async def run(query: str):

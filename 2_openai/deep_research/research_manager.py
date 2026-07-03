@@ -11,7 +11,7 @@ class ResearchManager:
         """ Run the deep research process, yielding the status updates and the final report"""
         trace_id = gen_trace_id()
         with trace("Research trace", trace_id=trace_id):
-            yield f"Starting research. Trace: https://platform.openai.com/traces/trace?trace_id={trace_id}"
+            yield f"Starting research. Trace: http://localhost:6006"
             search_plan = await self.plan_searches(query)
             yield f"Searches planned, starting {len(search_plan.searches)} searches..."     
             search_results = await self.perform_searches(search_plan)
