@@ -13,7 +13,7 @@ from datetime import datetime
 
 from dotenv import load_dotenv
 from pydantic import BaseModel, Field
-from langchain_openai import ChatOpenAI
+from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.agents import create_agent
 from langchain.agents.middleware import (
     AgentMiddleware,
@@ -89,7 +89,7 @@ class Sidekick:
         os.makedirs(SANDBOX, exist_ok=True)
         self.tools, self.sessions = await get_all_tools(SANDBOX)
         self.worker = create_agent(
-            model="openai:gpt-5.4-mini",
+            model="google_genai:gemini-3.1-flash-lite",
             tools=self.tools,
             system_prompt=f"{WORKER_PROMPT}\nToday is {datetime.now():%A %d %B %Y}.",
             middleware=[
@@ -104,7 +104,7 @@ class Sidekick:
             ],
             checkpointer=self.memory,
         )
-        self.evaluator = ChatOpenAI(model="gpt-5.4-mini").with_structured_output(EvaluatorOutput)
+        self.evaluator = ChatGoogleGenerativeAI(model="gemini-3.1-flash-lite").with_structured_output(EvaluatorOutput)
 
     async def evaluate(
         self, message: str, success_criteria: str, last_reply: str, tools_used: list[str]
